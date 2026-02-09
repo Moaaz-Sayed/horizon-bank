@@ -1,5 +1,5 @@
-function PaymentTransfer() {
+function Transfer() {
   return <div>Payment Transfer</div>;
 }
 
-export default PaymentTransfer;
+export default Transfer;
