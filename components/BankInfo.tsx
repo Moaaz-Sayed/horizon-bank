@@ -1,5 +1,7 @@
 "use client";
 
+import { useTransition } from "react";
+import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -13,16 +15,22 @@ import {
 const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
   const isActive = appwriteItemId === account?.appwriteItemId;
 
   const handleBankChange = () => {
+    if (isPending || isActive) return;
+
     const newUrl = formUrlQuery({
       params: searchParams.toString(),
       key: "id",
       value: account?.appwriteItemId,
     });
-    router.push(newUrl, { scroll: false });
+
+    startTransition(() => {
+      router.push(newUrl, { scroll: false });
+    });
   };
 
   const colors = getAccountTypeColors(account?.type as AccountTypes);
@@ -34,6 +42,7 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
         "shadow-sm border-blue-700": type === "card" && isActive,
         "rounded-xl": type === "card",
         "hover:shadow-sm cursor-pointer": type === "card",
+        "opacity-80": isPending,
       })}
     >
       <figure
@@ -63,9 +72,12 @@ const BankInfo = ({ account, appwriteItemId, type }: BankInfoProps) => {
           )}
         </div>
 
-        <p className={`text-16 font-medium text-blue-700 ${colors.subText}`}>
-          {formatAmount(account.currentBalance)}
-        </p>
+        <div className="flex items-center justify-between gap-2">
+          <p className={`text-16 font-medium text-blue-700 ${colors.subText}`}>
+            {formatAmount(account.currentBalance)}
+          </p>
+          {isPending && <Loader2 className="size-4 animate-spin text-blue-600" />}
+        </div>
       </div>
     </div>
   );
