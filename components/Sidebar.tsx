@@ -12,7 +12,7 @@ function Sidebar({ user }: SidebarProps) {
   const pathName = usePathname();
 
   return (
-    <section className="sidebar">
+    <section className="sidebar z-30">
       <nav className="flex flex-col gap-4">
         <Link href="/" className="flex mb-12 cursor-pointer items-center gap-2">
           <Image
