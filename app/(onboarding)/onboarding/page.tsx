@@ -56,6 +56,18 @@ async function Onboarding() {
               Log out
             </Button>
           </form>
+          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+            <p className="text-14 text-amber-900">
+              If you don&apos;t want to connect a bank now, you can log out and
+              try this ready account:
+            </p>
+            <p className="mt-2 text-14 font-semibold text-amber-900">
+              Email: hr@test.com
+            </p>
+            <p className="text-14 font-semibold text-amber-900">
+              Password: 123456789
+            </p>
+          </div>
         </div>
       </section>
     </main>

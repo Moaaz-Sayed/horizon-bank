@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-      <img src="https://github.com/adrianhajdin/banking/assets/151519281/3c03519c-7ebd-4539-b598-49e63d1770b4" alt="Project Banner">
+      <img src="/icons/banner.png" alt="Project Banner">
     </a>
   <br />
   
@@ -131,10 +131,13 @@ npm run dev
 
 **Let's Connetact**
 
+<div>
 <a href="https://www.linkedin.com/in/moaaz-sayed-43ba12270/" target="_blank">
 Linked In
 </a>
 
-<a href="moaaz40322@gmail.com" target="_blank">
+</div>
+
+<a href="mailto:moaaz40322@gmail.com" target="_blank">
 Gmail
 </a>
