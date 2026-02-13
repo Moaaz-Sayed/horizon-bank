@@ -1,7 +1,6 @@
 <div align="center">
   <br />
-      <img src="/icons/banner.png" alt="Project Banner">
-    </a>
+      <img src="https://raw.githubusercontent.com/Moaaz-Sayed/horizon-bank/main/public/icons/banner.png" alt="Project Banner">
   <br />
   
   <div>
@@ -12,6 +11,11 @@
   </div>
 
   <h3 align="center">A Fintech Bank Application</h3>
+  <p align="center">
+    <a href="https://horizon-bank-1zyiq188q-moaaz-sayeds-projects.vercel.app/" target="_blank">
+      Live Demo
+    </a>
+  </p>
 
 </div>
 
