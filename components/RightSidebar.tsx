@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import BankCard from "./BankCard";
+import PlaidLink from "./PlaidLink";
 
 function RightSidebar({ user, banks }: RightSidebarProps) {
   return (
@@ -28,11 +27,7 @@ function RightSidebar({ user, banks }: RightSidebarProps) {
         <div className="flex w-full justify-between">
           <h2 className="header-2">My Banks</h2>
 
-          <Link href="/" className="flex gap-2">
-            <Image src="/icons/plus.svg" alt="plus" width={20} height={20} />
-
-            <h2 className="text-14 font-semibold text-gray-600">Add Bank</h2>
-          </Link>
+          <PlaidLink user={user} variant="add-bank" />
         </div>
 
         {banks?.length > 0 && (

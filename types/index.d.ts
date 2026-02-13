@@ -175,7 +175,7 @@ declare interface PaginationProps {
 
 declare interface PlaidLinkProps {
   user: User;
-  variant?: "primary" | "ghost" | "mobile";
+  variant?: "primary" | "ghost" | "mobile" | "add-bank";
   dwollaCustomerId?: string;
 }
 
