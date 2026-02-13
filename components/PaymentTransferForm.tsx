@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -231,6 +232,13 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                       {...field}
                     />
                   </FormControl>
+                  <p className="mt-2 text-12 text-gray-500">
+                    You can find this ID in{" "}
+                    <Link href="/my-banks" className="font-medium text-bankGradient">
+                      My Banks
+                    </Link>
+                    .
+                  </p>
                   <FormMessage className="text-12 text-red-500" />
                 </div>
               </div>

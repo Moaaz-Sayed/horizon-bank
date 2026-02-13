@@ -12,7 +12,7 @@
 
   <h3 align="center">A Fintech Bank Application</h3>
   <p align="center">
-    <a href="https://horizon-bank-1zyiq188q-moaaz-sayeds-projects.vercel.app/" target="_blank">
+    <a href="horizon-bank-umber.vercel.app" target="_blank">
       Live Demo
     </a>
   </p>
