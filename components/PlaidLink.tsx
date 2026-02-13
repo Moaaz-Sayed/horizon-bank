@@ -67,6 +67,20 @@ function PlaidLink({ user, variant }: PlaidLinkProps) {
           />
           <p className="text-[16px] font-semibold text-black-2">Connect bank</p>
         </Button>
+      ) : variant === "mobile" ? (
+        <Button
+          onClick={() => open()}
+          variant="secondary"
+          className="plaidlink-mobile"
+        >
+          <Image
+            src="/icons/connect-bank.svg"
+            width={24}
+            height={24}
+            alt="Connect Bank"
+          />
+          <p className="text-[16px] font-semibold text-black-2">Connect bank</p>
+        </Button>
       ) : (
         <Button onClick={() => open()} className="plaidlink-default">
           <Image
