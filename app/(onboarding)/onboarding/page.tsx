@@ -3,6 +3,8 @@ import PlaidLink from "@/components/PlaidLink";
 import { Button } from "@/components/ui/button";
 import { getBanks, getLoggedInUser } from "@/lib/actions/user.actions";
 import { logoutAccount } from "@/lib/actions/user.actions";
+import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function Onboarding() {
@@ -17,11 +19,18 @@ async function Onboarding() {
   if (!loggedIn) redirect("/sign-in");
 
   const banks = await getBanks({ userId: loggedIn.$id });
-  if (banks?.length) redirect("/");
+  const hasLinkedBank = Boolean(banks?.length);
 
   return (
     <main className="flex min-h-screen w-full items-center justify-center bg-gray-25 px-6 py-10">
       <section className="w-full max-w-xl rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="mb-5 flex items-center gap-2">
+          <Image src="/icons/logo.svg" width={28} height={28} alt="Horizon Logo" />
+          <h1 className="text-20 font-ibm-plex-serif font-bold text-black-1">
+            Horizon
+          </h1>
+        </div>
+
         <HeaderBox
           title="Link Your First Bank"
           subtext="Before using Horizon, connect at least one bank account."
@@ -51,23 +60,31 @@ async function Onboarding() {
             and transactions.
           </p>
           <PlaidLink user={loggedIn} variant="primary" />
-          <form action={handleLogout}>
-            <Button type="submit" variant="outline" className="w-full">
-              Log out
+          {hasLinkedBank ? (
+            <Button asChild type="button" variant="outline" className="w-full">
+              <Link href="/">Home page</Link>
             </Button>
-          </form>
-          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
-            <p className="text-14 text-amber-900">
-              If you don&apos;t want to connect a bank now, you can log out and
-              try this ready account:
-            </p>
-            <p className="mt-2 text-14 font-semibold text-amber-900">
-              Email: hr@test.com
-            </p>
-            <p className="text-14 font-semibold text-amber-900">
-              Password: 123456789
-            </p>
-          </div>
+          ) : (
+            <form action={handleLogout}>
+              <Button type="submit" variant="outline" className="w-full">
+                Log out
+              </Button>
+            </form>
+          )}
+          {!hasLinkedBank && (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
+              <p className="text-14 text-amber-900">
+                If you don&apos;t want to connect a bank now, you can log out and
+                try this ready account:
+              </p>
+              <p className="mt-2 text-14 font-semibold text-amber-900">
+                Email: hr@test.com
+              </p>
+              <p className="text-14 font-semibold text-amber-900">
+                Password: 123456789
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </main>

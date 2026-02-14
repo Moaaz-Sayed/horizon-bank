@@ -12,7 +12,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Footer from "./Footer";
-import PlaidLink from "./PlaidLink";
 
 function MobileNav({ user }: MobileNavProps) {
   const pathName = usePathname();
@@ -46,7 +45,7 @@ function MobileNav({ user }: MobileNavProps) {
             </h1>
           </Link>
           <div className="mobilenav-sheet">
-            <nav className="flex h-full flex-col gap-6 pt-16 text-white">
+            <nav className="no-scrollbar flex flex-1 flex-col gap-6 overflow-y-auto pt-16 text-white">
               {sidebarLinks.map((item) => {
                 const isActive =
                   pathName === item.route ||
@@ -81,7 +80,22 @@ function MobileNav({ user }: MobileNavProps) {
                   </SheetClose>
                 );
               })}
-              <PlaidLink user={user} variant="mobile" />
+              <SheetClose asChild>
+                <Link
+                  href="/onboarding"
+                  className={cn("mobilenav-sheet_close w-full", "plaidlink-mobile")}
+                >
+                  <Image
+                    src="/icons/connect-bank.svg"
+                    width={24}
+                    height={24}
+                    alt="Connect Bank"
+                  />
+                  <p className="text-[16px] font-semibold text-black-2">
+                    Connect bank
+                  </p>
+                </Link>
+              </SheetClose>
             </nav>
             <Footer user={user} type="mobile" />
           </div>
